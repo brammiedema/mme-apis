@@ -77,11 +77,10 @@ The response to the search request looks like:
 }
 ```
 
-#### Query identifier
+#### institution
 * ***Mandatory***
-* Helps match the results to the original query for asynchronous results, and allows the submitter to manage the search submission
-* This does not have to be the same as the id sent in the request since it represents how the remote host stores queries
-* Transparent string, limited to 255 characters in utf-8.
+* Helps match the results to the original source of the results, and allows the submitter to manage the result by institute.
+
 
 #### Results
 * ***Mandatory*** for inline results, but can be empty
@@ -92,11 +91,11 @@ The response to the search request looks like:
 {"responses":
   [
     {
-      "queryID" : <identifier>,
+      "institution" : <hospital name>, 
       "results" : […]
     },
     {
-      "queryID" : <identifier>,
+      "institution" : <hospital name>, 
       "results" : […]
     },
     …
