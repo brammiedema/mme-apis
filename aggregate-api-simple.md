@@ -4,7 +4,7 @@
 `HTTP POST` to remote server: `<base_remote_url>/mmapi/v1/aggregate`
 For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 
-## aggregate Request
+## Aggregate Request
 
 `HTTP POST` request to `<base_remote_url>/mmapi/v1/match`, with an `application/json` body with the following format:
 
