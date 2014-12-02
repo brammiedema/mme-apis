@@ -1,8 +1,8 @@
 # OVERVIEW
 
-**Submit patient matching request:**
+**Submit summary information of patients matching request:**
 `HTTP POST` to remote server: `<base_remote_url>/mmapi/v1/aggregate`
-For example: `https://yourmatchmaker.org/mmapi/v1/match`
+For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 
 ## aggregate Request
 
