@@ -4,7 +4,6 @@
 `HTTP POST` to remote server: `<base_remote_url>/mmapi/v1/aggregate`
 For example: `https://yourmatchmaker.org/mmapi/v1/match`
 
-
 ## aggregate Request
 
 `HTTP POST` request to `<base_remote_url>/mmapi/v1/match`, with an `application/json` body with the following format:
@@ -29,8 +28,6 @@ For example: `https://yourmatchmaker.org/mmapi/v1/match`
       "end" : <number>,
       "referenceBases" : "A"|"ACG"|…,
       "alternateBases" : "A"|"ACG"|…,
-      "zygosity" : <number>,
-      "type" : <mutation type>,
       "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
     },
     …
@@ -52,7 +49,6 @@ For example: `https://yourmatchmaker.org/mmapi/v1/match`
 * **The contact information is for transmitting match results only, and may not be collected and/or used for any other purposes**
 
 #### Genes
-* It is ***mandatory*** to have at least one of these two: `features`, `genes` (having both is preferred)
 * Is a **list of possible causes** described by:
   * `gene`:
     * `<gene symbol>` from the [HGNC database](http://www.genenames.org/) OR
@@ -64,22 +60,13 @@ For example: `https://yourmatchmaker.org/mmapi/v1/match`
       * **NOTE:** The location (`referenceName`, `start`, `end`) is *optional*
   * `referenceBases`: `"A"`|`"ACG"`|…, VCF-style reference of at least one base (*optional*)
   * `alternateBases`: `"A"`|`"ACG"`|…, VCF-style alternate allele of at least one base (*optional*)
-  * `zygosity`: `<number>` (`1` for heterozygous or hemizygous, `2` for homozygous; *optional*)
-  * `type`: the (*optional*) type of mutation, as a means to describe the broad category of cDNA effect predicted to result from a mutation to improve matchmaking, without disclosing the actual mutation:
-    * `TRUNCATING` (e.g. stopgain, stoploss, startloss, frameshift indel)
-    * `ALTERING` (e.g. missense, non-frameshift indel)
-    * `SPLICING`
-    * `UTR` (UTR3, UTR5)
-    * `INTRONIC`
-    * `PROXIMAL` (e.g. upstream, downstream)
-    * `OTHER` (e.g. motif disruption, synonymous)
   * `assembly`: reference assembly identifier, including patch number if relevant, of the form: `<assembly>[.<patch>]` (***mandatory***)
     * example valid values: `"NCBI36"`, `"GRCh37"`, `"GRCh37.p13"`, `"GRCh38"`, `"GRCh38.p1"`
     * If the patch is not provided, the assembly is assumed to represent the initial (unpatched) release of that assembly.
 * This should list either *candidate genes*, using the `gene` field with optionally other more specific fields, or precise *genomic variants*, specifying the assembly, the location (`referenceName`, `start`, `end`), and the reference and alternate bases
 
 ## Search Results Response
-Either a synchronous `application/json` response to a `/match` request, an asynchronous `application/json` `HTTP POST` request to `<base_origin_url>/mmapi/v1/matchResults`, or a human-readable email sent to the user’s email address.
+An asynchronous `application/json` `HTTP POST` request to `<base_origin_url>/mmapi/v1/matchResults`, this wil result in a response holding the resulting aggregate in json format.
 
 The response to the search request looks like:
 
@@ -111,7 +98,6 @@ The response to the search request looks like:
 * Transparent string, limited to 255 characters in utf-8.
 
 #### Results
-* *Absent* for asynchronous results
 * ***Mandatory*** for inline results, but can be empty
 * Is a **list of matches**, where each match has the same format as the one described above for the query
 
