@@ -12,14 +12,6 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 
 ```json
 {
-  "id" : <identifier>,
-
-  "submitter" : {
-     "name" : "First Last",
-     "email" : <email address>,
-     "institution" : "Some Hospital"
-  },
-
   "genes" : [
     {
       "gene" : <gene name>|<ensembl gene ID>|<entrez gene ID>,
@@ -34,20 +26,6 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
   ]
 }
 ```
-
-#### ID
-* ***Mandatory***
-* The internal identifier (obfuscated or not) that can be used by the originating system to reference the patient data.
-* Transparent string, limited to 255 characters in utf-8.
-
-#### Submitter
-* ***Mandatory*** if an email response is expected, *Optional* otherwise
-* Consists of contact information of the person that submitted the search:
-  * `email`: the email address where matches can be sent (***mandatory***); the values must conform to the [RFC 2822 address specification](http://tools.ietf.org/html/rfc2822#section-3.4) mailbox format (no group)
-  * `name`: the first and last name (*optional*)
-  * `institution`: human-readable institution name (*optional*)
-* **The contact information is for transmitting match results only, and may not be collected and/or used for any other purposes**
-
 #### Genes
 * Is a **list of possible causes** described by:
   * `gene`:
@@ -74,17 +52,25 @@ The response to the search request looks like:
 
 ```json
 {
-  "queryID" : <identifier>,
-  "responseType" : "inline",
   "results" : [
     {
-      "genotyes" : [
-        { "1/0" : <number>,
+      "institution" : <hospital name>, 
+      "genes" : [
+      {
+        "gene" : <gene name>|<ensembl gene ID>|<entrez gene ID>,
+        "referenceName" : "1"|"2"|…|"X"|"Y",
+        "start" : <number>,
+        "end" : <number>,
+        "referenceBases" : "A"|"ACG"|…,
+        "alternateBases" : "A"|"ACG"|…,
+        "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
+        genotyes": { 
+          "1/0" : <number>,
           "1/1" : <number>,
           "0/0" : <number>,
-        },…
+        }
+      },…
       ]
-      "genes" : […]
     },
     …
   ]
