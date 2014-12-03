@@ -67,7 +67,7 @@ The response to the search request looks like:
         "genotypes": { 
           "1/0" : <amount observed>,
           "1/1" : <amount observed>,
-          "0/0" : <amount observed>,
+          "0/0" : <amount observed>,…
         }
       },…
       ]
