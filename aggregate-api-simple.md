@@ -18,8 +18,8 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
       "referenceName" : "1"|"2"|…|"X"|"Y",
       "start" : <number>,
       "end" : <number>,
-      "allele1" : "A"|"ACG"|…,
-      "allele2" : "A"|"ACG"|…,
+      "referenceBases" : "A"|"ACG"|…,
+      "alternateBases" : "A"|"ACG"|…,
       "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
     },
     …
@@ -60,8 +60,8 @@ The response to the search request looks like:
         "referenceName" : "1"|"2"|…|"X"|"Y",
         "start" : <number>,
         "end" : <number>,
-        "referenceBases" : "A"|"ACG"|…,
-        "alternateBases" : "A"|"ACG"|…,
+        "alelle1" : "A"|"ACG"|…,
+        "alelle2" : "A"|"ACG"|…,
         "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
         "genotypes": { 
           "1/0" : <amount observed>,
