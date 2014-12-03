@@ -14,7 +14,7 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 {
   "aggregateRequest" : [
     {
-      "gene" : <gene name>|<ensembl gene ID>|<entrez gene ID>,
+      "gene" : <gene symbol>|<ensembl gene ID>|<entrez gene ID>,
       "referenceName" : "1"|"2"|…|"X"|"Y",
       "start" : <number>,
       "end" : <number>,
