@@ -18,8 +18,8 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
       "referenceName" : "1"|"2"|…|"X"|"Y",
       "start" : <number>,
       "end" : <number>,
-      "referenceBases" : "A"|"ACG"|…,
-      "alternateBases" : "A"|"ACG"|…,
+      "allele1" : "A"|"ACG"|…,
+      "allele2" : "A"|"ACG"|…,
       "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
     },
     …
