@@ -64,10 +64,10 @@ The response to the search request looks like:
         "referenceBases" : "A"|"ACG"|…,
         "alternateBases" : "A"|"ACG"|…,
         "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
-        genotyes": { 
-          "1/0" : <number>,
-          "1/1" : <number>,
-          "0/0" : <number>,
+        "genotypes": { 
+          "1/0" : <amount observed>,
+          "1/1" : <amount observed>,
+          "0/0" : <amount observed>,
         }
       },…
       ]
