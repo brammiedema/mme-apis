@@ -35,7 +35,6 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
   * `referenceName`: `"1"`, `"2"`, …, `"22"`, `"X"`, `"Y"`; the chromosome this variant or gene is on
   * `start`: `<number>`; the start position of the variant. (0-based)
   * `end`: `<number>`; the end position of the variant. (0-based, exclusive)
-      * **NOTE:** The location (`referenceName`, `start`, `end`) is *optional*
   * `referenceBases`: `"A"`|`"ACG"`|…, VCF-style reference of at least one base (*optional*)
   * `alternateBases`: `"A"`|`"ACG"`|…, VCF-style alternate allele of at least one base (*optional*)
   * `assembly`: reference assembly identifier, including patch number if relevant, of the form: `<assembly>[.<patch>]` (***mandatory***)
