@@ -12,10 +12,10 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 
 ```json
 {
-  "genes" : [
+  "aggregateRequest" : [
     {
       "gene" : <gene name>|<ensembl gene ID>|<entrez gene ID>,
-      "referenceName" : "1"|"2"|…|"X"|"Y",
+      "chromosome" : "1"|"2"|…|"X"|"Y",
       "start" : <number>,
       "end" : <number>,
       "referenceBases" : "A"|"ACG"|…,
@@ -28,7 +28,7 @@ For example: `https://yourmatchmaker.org/mmapi/v1/aggregate`
 ```
 #### Genes
 * Is a **list of possible causes** described by:
-  * `gene`:
+  * `aggregateRequest`:
     * `<gene symbol>` from the [HGNC database](http://www.genenames.org/) OR
     * `<ensembl gene ID>` OR
     * `<entrez gene ID>`
@@ -51,23 +51,27 @@ The response to the search request looks like:
 
 ```json
 {
-  "results" : [
+  "aggregateResult" : [
     {
       "institution" : <hospital name>, 
-      "genes" : [
+      "variants" : [
       {
         "gene" : <gene name>|<ensembl gene ID>|<entrez gene ID>,
         "referenceName" : "1"|"2"|…|"X"|"Y",
         "start" : <number>,
         "end" : <number>,
-        "alelle1" : "A"|"ACG"|…,
-        "alelle2" : "A"|"ACG"|…,
+        
+        "alleles"[
+        {
+          "allele1" : "A",
+          "allele2" : "T",
+          "heteroygotes" : <amount observed>,
+          "homozygotesReference" : <amount observed>,
+          "homozygotesAlternate" : <amount observed>
+        },…
+        ]
+       
         "assembly" : "NCBI36"|"GRCh37.p13"|"GRCh38.p1"|…
-        "genotypes": { 
-          "1/0" : <amount observed>,
-          "1/1" : <amount observed>,
-          "0/0" : <amount observed>,…
-        }
       },…
       ]
     },
@@ -76,10 +80,13 @@ The response to the search request looks like:
 }
 ```
 
-#### institution
+#### Institution
 * ***Mandatory***
 * Helps match the results to the original source of the results, and allows the submitter to manage the result by institute.
 
+#### Alleles
+* ***Mandatory***
+* In case of hemizygote situations leaving out the allele2 field is suggested.
 
 #### Results
 * ***Mandatory*** for inline results, but can be empty
